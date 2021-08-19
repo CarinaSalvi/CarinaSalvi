@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/Fragmentos/fragmentos.html :: head"></head>
+    
+
+<body> 
+    <header th:insert="/Fragmentos/fragmentos.html :: header"></header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card mb-lg-0 bg-primary text-center">
+                <h5>Registro Cliente</h5>
+            </div>
+            <div class="col-sm-5 col-md-6">
+                <form th:action="@{/cliente/crear}" method="POST">
+                    <p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <label for="disabledTextInput" class="form-label">Nombre</label>
+                            <input type="text" name="nombre" class="form-control" th:value="${nombre}"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <label for="disabledTextInput" class="form-label">Apellido</label>
+                            <input type="text" name="apellido" class="form-control" th:value="${apellido}"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <label for="disabledTextInput" class="form-label">DNI</label>
+                            <input type="text" name="docu" class="form-control" th:value="${docu}"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <label for="disabledTextInput" class="form-label">Domicilio</label>
+                            <input type="text" name="domicilio" class="form-control" th:value="${domicilio}"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <label for="disabledTextInput" class="form-label">Teléfono</label>
+                            <input type="text" name="telefono" class="form-control" th:value="${telefono}"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <label for="disabledTextInput" class="form-label">Email</label>
+                            <input type="email" name="mail" class="form-control" th:value="${mail}"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <label class="form-check-label" for="disabledFieldsetCheck">Password</label>  
+                            <input type="password" name="contrase" class="form-control" th:value="${contrase}"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <label class="form-check-label" for="disabledFieldsetCheck">Repetir Password</label>  
+                            <input type="password" name="contrase1" class="form-control" th:value="${contrase1}"/>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>             
+            </div>
+        </div>       
+    </div>
+    
+        <!--div th:if="${exito}!=null" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Exito!</strong> Fabricante registrado.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <!--span aria-hidden="true">&times;</span-->
+        <!--/button>
+    </div>
+  
+    <div th:if="${error}!=null" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> <p th:text="${error}"></p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <!--span aria-hidden="true">&times;</span-->
+        <!--/button>
+    </div-->
+    
+</body>    
+
+<footer th:replace="Fragmentos/fragmentos.html :: pie"></footer>
+
+</html>

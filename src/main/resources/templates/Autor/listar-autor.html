@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="/Fragmentos/fragmentos.html :: head"></head>
+    
+    <body>
+        <header th:insert="/Fragmentos/fragmentos.html :: header"></header>
+        <h2>Listado de Autores</h2>
+        <div class="container m-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                    </tr>
+                </thead>
+                <tbody th:each="autor : ${aut}">
+                    <tr>
+                        <td th:text="${autor.idAut}"></td>
+                        <td th:text="${autor.nombre}"></td>
+                </tbody>
+            </table>
+
+<!--BOTON PARA VOLVER A LA PRINCIPAL-->
+            <section class="py-5 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <a th:href="@{/}" class="btn btn-primary my-2">Volver</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+	</div>
+        
+    </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/Fragmentos/fragmentos.html :: head"></head>
+    
+
+<body> 
+    <header th:insert="/Fragmentos/fragmentos.html :: header"></header>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">  <!--LOGO y NOMBRE-->
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+              <img th:src="@{/imag/icono.jpg}" width="40" height="40" class="d-inline-block align-top" alt=""></a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              
+              <li class="nav-item">
+                <h1> Arte & Conocimiento</h1>
+              </li>
+            </ul>
+          </div>  
+        </div>
+    </nav>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-info"><!--OTROS BOTONES-->
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"></a>
+           
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+             
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Libro
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/libro/crear" target="_blank" title="Crear-Libro">Crear</a></li>
+                  <li><a class="dropdown-item" href="#">Modificar</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Editorial
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Crear</a></li>
+                  <li><a class="dropdown-item" href="#">Modificar</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Autor
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/autor/crear" target="_blank" title="Crear-Autor">Crear</a></li>
+                  <li><a class="dropdown-item" href="/autor/listar1" target="_blank" title="Modificar-Autor">Modificar Autor</a></li>
+                  <li><a class="dropdown-item" href="/autor/listar" target="_blank" title="Listar-Autor">Listar Autor</a></li>
+                </ul>
+              </li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Cliente
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/cliente/crear" target="_blank" title="Crear-Cliente">Crear</a></li>
+                  <!--li><a class="dropdown-item" href="/autor/listar1" target="_blank" title="Modificar-Autor">Modificar Autor</a></li>
+                  <li><a class="dropdown-item" href="/autor/listar" target="_blank" title="Listar-Autor">Listar Autor</a></li-->
+                </ul>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/logout" target="_blank" title="Registro">Salir</a>
+              </li>      
+              
+                     
+              <!--li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </!--li-->
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">Buscar</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card mb-lg-0 bg-primary text-center">
+                <h5>Registro</h5>
+            </div>
+            <div class="col-sm-5 col-md-6">
+                <form action="/login-check" method="POST">
+                    <p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+                    <p th:if="${logout != null}" th:text="${logout}" style="color:green"></p>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <label for="disabledTextInput" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <label class="form-check-label" for="disabledFieldsetCheck">Password</label>  
+                            <input type="password" class="form-control" name="clave"/>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+                <!--div th:insert="/Fragmentos/fragmentos.html :: crear"></div-->
+            </div>
+            <!--div class="col-sm-5 col-md-6">
+            <img th:src="@{/imag/autor2.jpg}" class="card align-right img-fluid" alt="Error">
+            
+            </div-->
+        </div>
+        
+    </div>
+    
+    <div class="container m-3">
+
+    <!-- Esto nos va servir para mostrar un mensaje de alerta si el fabricante fue registrado 
+    con exito o hubo un error. -->
+    <div th:if="${exito}!=null" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Exito!</strong> Fabricante registrado.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <!--span aria-hidden="true">&times;</span-->
+        </button>
+    </div>
+  
+    <div th:if="${error}!=null" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> <p th:text="${error}"></p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <!--span aria-hidden="true">&times;</span-->
+        </button>
+    </div>
+
+</body>
+<footer th:replace="Fragmentos/fragmentos.html :: pie"></footer>
+</html>
